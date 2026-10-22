@@ -1,0 +1,23 @@
+{
+    "targets": [
+        { "name": "final", "depth": false },
+        { "name": "swap", "depth": false }
+    ],
+    "passes": [
+        {
+            "name": "onyx_glow_liquid_metal",
+            "intarget": "final",
+            "outtarget": "swap",
+            "uniforms": [
+                {
+                    "name": "BaseColor",
+                    "values": [ 0.47, 0.84, 1.0, 0.75 ]
+                },
+                {
+                    "name": "EffectData",
+                    "values": [ 0.0, 0.0, 0.0, 0.0 ]
+                }
+            ]
+        }
+    ]
+}

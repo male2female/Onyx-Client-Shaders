@@ -1,0 +1,57 @@
+{
+    "targets": [
+        { "name": "final", "depth": false },
+        { "name": "blurx", "scale": 0.5, "depth": false },
+        { "name": "halo", "scale": 0.5, "depth": false },
+        { "name": "swap", "depth": false }
+    ],
+    "passes": [
+        {
+            "name": "onyx_glow_blur",
+            "intarget": "final",
+            "outtarget": "blurx",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 1.0, 0.0 ]
+                },
+                {
+                    "name": "Radius",
+                    "values": [ 10.0 ]
+                }
+            ]
+        },
+        {
+            "name": "onyx_glow_blur",
+            "intarget": "blurx",
+            "outtarget": "halo",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 0.0, 1.0 ]
+                },
+                {
+                    "name": "Radius",
+                    "values": [ 10.0 ]
+                }
+            ]
+        },
+        {
+            "name": "onyx_glow_composite",
+            "intarget": "final",
+            "outtarget": "swap",
+            "auxtargets": [
+                {
+                    "name": "HaloSampler",
+                    "id": "halo"
+                }
+            ],
+            "uniforms": [
+                {
+                    "name": "Intensity",
+                    "values": [ 0.75 ]
+                }
+            ]
+        }
+    ]
+}
